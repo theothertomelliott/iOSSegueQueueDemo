@@ -24,4 +24,14 @@ From here, clicking back will take you to the original screen. Now, click the lo
 
 ![Second View - Segue on Background](Screenshots/SecondScreen-BackgroundQueue.png)
 
-Half of the components don't render correctly! This is an obvious example of the behaviour. However, the problem can also manifest in more subtle ways, such as the keyboard not rendering while remaining responsive to taps. 
+Half of the components don't render correctly! This is an obvious example of the behaviour. However, the problem can also manifest in more subtle ways, such as the keyboard not rendering while remaining responsive to taps.
+
+## The Solution
+
+In order to avoid this, you need to make sure that all your segues are called from the main queue. This could be an involved process, requiring careful consideration of the flow to each of your segues, specifically where they're called in blocks, or using asynchronous code. 
+
+Alternatively, you could just wrap them all in a dispatch block:
+
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        [self performSegueWithIdentifier:@"detailSegue" sender:self];
+    });
