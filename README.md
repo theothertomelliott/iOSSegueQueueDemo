@@ -14,14 +14,14 @@ However, if you execute a segue on a non-UI thread, you can end up with some ver
 
 If you open and run this project in the simulator, you will see a simple view with two buttons.
 
-<img src="Screenshots/StartScreen.png" border="1"/>
+![Starting View](Screenshots/StartScreen.png)
 
 Click the top button and you will be taken to a view with a sampling of components.
 
-<img src="Screenshots/SecondScreen-MainQueue.png" border="1"/>
+![Second View - Segue on Main](Screenshots/SecondScreen-MainQueue.png)
 
 From here, clicking back will take you to the original screen. Now, click the lower, "background queue" button.
 
-<img src="Screenshots/SecondScreen-BackgroundQueue.png" border="1"/>
+![Second View - Segue on Background](Screenshots/SecondScreen-BackgroundQueue.png)
 
 Half of the components don't render correctly! This is an obvious example of the behaviour. However, the problem can also manifest in more subtle ways, such as the keyboard not rendering while remaining responsive to taps. 
